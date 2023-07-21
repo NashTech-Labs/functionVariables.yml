@@ -14,7 +14,6 @@ Paramaters:
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | appDeploymentTarget | string | | | Required | |
 | key | string | | | Required | |
-
 | functionAppServiceNames | string | | | Optional | |
 | functionArchivePattern | string | | | Optional | |
 | functionExtractFolder | string | | | Optional | |
