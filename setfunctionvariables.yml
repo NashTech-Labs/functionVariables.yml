@@ -1,0 +1,45 @@
+parameters: 
+  - name: appDeploymentTarget
+    type: string
+    
+  - name: key
+    type: string
+    
+  - name: functionAppServiceNames
+    type: string 
+    
+  - name: functionArchivePattern
+    type: string
+    default: ''
+    
+  - name: functionExtractFolder
+    type: string
+    default: '' 
+
+  - name: functionPackageId
+    type: string
+    default: ''
+
+  - name: functionPackageVersion
+    type: string
+    default: ''
+
+  - name: enablefunctionVariables
+    type: boolean
+    default: true
+    
+steps:
+- ${{ if and(eq(parameters.appDeploymentTarget, 'AppService'), eq(parameters.key, 'Function-AppServiceMatrix')) }}:
+  - pwsh: |
+      "##vso[task.setvariable variable=Function.appServiceNames]${{ parameters.functionAppServiceNames }}"
+    name: SetAppServiceList
+    displayName: Set App Service List
+
+- ${{ if and(eq(parameters.appDeploymentTarget, 'AppService'), eq(parameters.key, 'Function')) }}:
+  - pwsh: |
+      "##vso[task.setvariable variable=Function.archivePattern]${{ parameters.functionArchivePattern }}"
+      "##vso[task.setvariable variable=Function.extractFolder]${{ parameters.functionExtractFolder }}"
+      "##vso[task.setvariable variable=Function.packageId]${{ parameters.functionPackageId }}"
+      "##vso[task.setvariable variable=Function.pacakgeVersion]${{ parameters.functionPackageVersion }}"
+    name: SetFunctionDeploymentVariables
+    displayName: Set Function Deployment Variables
