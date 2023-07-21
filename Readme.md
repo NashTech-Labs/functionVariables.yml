@@ -39,7 +39,7 @@ You can directly call a particular template as per the requirement. for example:
       type: github
       name: duck-creek/ADO.Pipelines.Templates
       ref: <respective branch name>
-      endpoint: 'Duck Creek'
+      endpoint: 'githubServiceConnectioNname'
 
 
 
